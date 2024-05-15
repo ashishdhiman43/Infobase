@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add User</title>
+        <script>
+        function loadXML() {
+            var userid = document.getElementById("userid").value;
+            var firstName = document.getElementById("firstName").value;
+            var lastName = document.getElementById("lastName").value;
+            var email = document.getElementById("email").value;
+
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open("GET", "http://localhost:9090/InfoBase/rest/service/user/add/" + userid + "/" + firstName + "/" + lastName + "/" + email, true);
+            xmlHttp.setRequestHeader("Accept", "application/json");
+            xmlHttp.onreadystatechange = function () {
+                if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                    alert("User added successfully!");
+                }
+            };
+            xmlHttp.send();
+        }
+    </script>
+</head>
+<body>
+    <h2>Add User</h2>
+        Enter the user id:
+        <input type="text" id="userid" name="userid"><br>
+        Enter the First Name:
+        <input type="text" id="firstName" name="firstName"><br>
+        Enter the Last Name:
+        <input type="text" id="lastName" name="lastName"><br>
+        Enter the E-mail:
+        <input type="email" id="email" name="email"><br><br>
+        <input type="submit" value="Submit" onclick="loadXML()">
+</body>
+</html>

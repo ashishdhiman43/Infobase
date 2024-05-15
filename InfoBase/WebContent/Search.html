@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Find User</title>
+<script type="text/javascript">
+	function loadXML() {
+		var userid = document.getElementById("id").value;
+
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.open("GET", "http://localhost:9090/InfoBase/rest/service/user/"+userid, true);
+		xmlhttp.setRequestHeader("Accept","application/json");
+		xmlhttp.onreadystatechange=function(){
+			if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+				document.getElementById('showInfo').innerHTML=xmlhttp.responseText;
+			}
+		};
+		xmlhttp.send();
+	}
+</script>
+</head>
+<body>
+	Enter the User ID:
+	<br>
+	<input type="number" id="id">
+	<button onclick="loadXML()">Search</button>
+	<div id="showInfo"></div>
+</body>
+</html>

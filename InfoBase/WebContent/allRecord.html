@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Shows All Record</title>
+<script>
+	function loadXML() {
+		var xmlHttp = new XMLHttpRequest();
+
+		xmlHttp.open("GET","http://localhost:9090/InfoBase/rest/service/user",true);
+		xmlHttp.setRequestHeader("Accept","application/json");
+		xmlHttp.onreadystatechange=function () {
+			if (xmlHttp.readyState==4 && xmlHttp.status==200) {
+				document.getElementById('all').innerHTML=xmlHttp.responseText;
+			}
+		};
+		xmlHttp.send();
+	}
+</script>
+</head>
+<body>
+	<button onclick="loadXML()">Shows All</button>
+	<br>
+	<div id="all">Info listed here</div>
+</body>
+</html>

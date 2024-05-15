@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Update Records</title>
+<script type="text/javascript">
+	function loadXML() {
+
+		var userid = document.getElementById('userid').value;
+		var userfirst = document.getElementById('userfirst').value;
+		var userlast = document.getElementById('userlast').value;
+		var usermail = document.getElementById('usermail').value;
+
+		var xmlHttp = new XMLHttpRequest();
+		xmlHttp.open("GET", "http://localhost:9090/InfoBase/rest/service/user/update/" + userid + "/" + userfirst + "/" + userlast + "/" + usermail, true);
+		xmlHttp.setRequestHeader("Accept","application/json");
+		xmlHttp.onreadystatechange=function(){
+			if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+				alert("Update Successfully");
+			}
+		};
+		xmlHttp.send();
+	}
+</script>
+</head>
+<body>
+	Enter the ID:
+	<input type="number" name="userid" id="userid"><br>
+	Enter the First Name:
+	<input type="text" name="userfirst" id="userfirst"><br>
+	Enter the Last Name:
+	<input type="text" name="userlast" id="userlast"><br>
+	Enter the Email:
+	<input type="text" name="usermail" id="usermail"><br>
+	<button id="update" onclick="loadXML()">Update</button>
+</body>
+</html>

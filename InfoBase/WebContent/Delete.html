@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Delete User</title>
+	<script>
+		function loadXML() {
+			var userid = document.getElementById("id").value;
+
+			var xmlHttp = new XMLHttpRequest();
+			xmlHttp.open("GET", "http://localhost:9090/InfoBase/rest/service/user/del/"+userid, true);
+			xmlHttp.setRequestHeader("Accept","application/json");
+			xmlHttp.onreadystatechange=function(){
+				if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                    alert("User deleted successfully!");
+                }
+			};
+			xmlHttp.send();
+		}
+	</script>
+</head>
+<body>
+	Enter the User ID:
+	<br>
+	<input type="number" id="id">
+	<button onclick="loadXML()">Clear</button>
+</body>
+</html>
